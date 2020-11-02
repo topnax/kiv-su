@@ -4,17 +4,11 @@
 % X is the matrix where each row is a single string
 function [model] = dictionaryFT_train (X)
     model = {};
-
-   
-
     for iter = 1:length(X)
         val = X(iter,:);
         x = val(1,:)
         if ~ismember(val, model)
           model(length(model) + 1,:) = val(1,:);
         end
-        %model
-  
-    endfor
-  
+    end
 end

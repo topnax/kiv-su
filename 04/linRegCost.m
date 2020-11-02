@@ -6,9 +6,10 @@ function [J, grad] = linRegCost(X, y, theta)
 % Initialize some useful values
 m = length(y); % number of training examples
 J = 0;
-prediction = X * theta;
+prediction = linRegPredict(X, theta);
 
 J = (1/2 * m) * (prediction - y).' * (prediction - y);
+grad = (1 / 2 * m) * X' * (X * theta - y) * (1/m)*(1/(0.5*m));
 
 
 % =========================================================================

@@ -15,7 +15,7 @@ function [X_trans] = dictionaryFT_transform (X, model)
     else 
       % found
       X_trans(iter, index+1) = 1;
-    endif
-  endfor
+    end
+  end
   
 end
