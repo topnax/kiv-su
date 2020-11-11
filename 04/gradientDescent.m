@@ -4,7 +4,6 @@ function [theta, thetaHistory, J_history] = gradientDescent(costFunction, initia
 
   % Initialize some useful values
   theta = initialTheta;
-  theta_back = initialTheta;
   J_history = [];
   thetaHistory = [];
   iter = 1;
@@ -12,7 +11,7 @@ function [theta, thetaHistory, J_history] = gradientDescent(costFunction, initia
     
     [J, grad] =  costFunction(theta);
          
-    new_theta = theta - (options.alpha) * (grad);
+    new_theta = theta - options.alpha * grad;
 
     % store current theta into theta history
     thetaHistory(iter, :) = new_theta;

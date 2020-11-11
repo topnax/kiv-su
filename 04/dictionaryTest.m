@@ -1,4 +1,4 @@
-training = ["first"; "second"; "first"; "third"; "first"; "second"];
+training = ["first"; "first"; "first"; "second"; "first"; "third"; "first"; "second"];
 
 model = dictionaryFT_train(training);
 
