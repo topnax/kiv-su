@@ -11,7 +11,9 @@ plotData(X(:,2:3), y);
 hold on
 
     %TODO plot decision boundary here
-    
+    X
+    z = theta * X;
+    plot(x, z);
     % Legend, specific for the exercise
     legend('Admitted', 'Not admitted', 'Decision Boundary')
 hold off
