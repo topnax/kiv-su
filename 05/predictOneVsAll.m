@@ -32,9 +32,11 @@ X = [ones(m, 1) X];
 %       
 
 
+probabilities = sigmoid(X * all_theta');
+[max_val, indices] = max(probabilities, [], 2);
 
-
-
+p = indices;
+p
 
 % =========================================================================
 

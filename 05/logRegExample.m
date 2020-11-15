@@ -106,8 +106,10 @@ pause;
 %TODO
 %  Predict probability for a student with score 45 on exam 1 
 %  and score 85 on exam 2 
+first_exam = (45 - mu(1)) / sigma(1);
+second_exam = (85 - mu(2)) / sigma(2);
 
-prob = 0;
+prob = sigmoid([1 first_exam second_exam] * theta);
 fprintf(['For a student with scores 45 and 85, we predict an admission ' ...
          'probability of %f\n\n'], prob);
 

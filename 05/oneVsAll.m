@@ -28,8 +28,15 @@ X = [ones(m, 1) X];
 % Hint: You can use y == c to obtain a vector of 1's and 0's that tell use 
 %       whether the ground truth is true/false for this class.
 
-     % Set Initial theta
-     initial_theta = zeros(n + 1, 1);
+% Set Initial theta
+initial_theta = zeros(n + 1, 1);
+for i = 1 : num_labels
+    c = i;
+    y_c = y == c;
+    [theta, theta_history, J_history] = train(X, y == c);
+    all_theta(i,:) = theta';
+    printf("trained\n");
+end
 
 
 
@@ -39,6 +46,11 @@ X = [ones(m, 1) X];
 
 
 
+  %logReg.cost  = @logRegCost;
+  %logReg.opt = @gradientDescent;
+  %logReg.predict = @logRegPredict;
+  %logReg.options.alpha = 0.1;
+  %logReg.options.num_iters = 400;
 
 
 
