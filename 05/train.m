@@ -11,8 +11,8 @@ function [theta, theta_history, J_history] = train (X, y)
 	initial_theta = zeros(n, 1);
 	%  Run fminunc to obtain the optimal theta
 	%  This function will return theta and the cost
-    unc_options = optimset("GradObj", "on", "MaxIter", 400);
     [J_history, grad] = logRegCost(X, y, initial_theta);
 	[theta, theta_history, J_history] = gradientDescent(@(t)(logRegCost(X, y, t)), initial_theta, options);
-%    theta_by_unc = fminunc(@(t)logRegCost(X, y, t), initial_theta, unc_options); 
+    % unc_options = optimset("GradObj", "on", "MaxIter", 400);
+    % theta_by_unc = fminunc(@(t)logRegCost(X, y, t), initial_theta, unc_options); 
 end

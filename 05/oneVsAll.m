@@ -31,31 +31,8 @@ X = [ones(m, 1) X];
 % Set Initial theta
 initial_theta = zeros(n + 1, 1);
 for i = 1 : num_labels
-    c = i;
-    y_c = y == c;
-    [theta, theta_history, J_history] = train(X, y == c);
+    [theta, theta_history, J_history] = train(X, y == i);
     all_theta(i,:) = theta';
-    printf("trained\n");
 end
-
-
-
-
-
-
-
-
-
-  %logReg.cost  = @logRegCost;
-  %logReg.opt = @gradientDescent;
-  %logReg.predict = @logRegPredict;
-  %logReg.options.alpha = 0.1;
-  %logReg.options.num_iters = 400;
-
-
-
 
 % =========================================================================
-
-
-end
