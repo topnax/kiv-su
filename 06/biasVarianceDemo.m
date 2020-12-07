@@ -38,7 +38,7 @@ pause;
 %
 
 theta = [1 ; 1];
-options.lambda = 1;
+options.lambda = 0.05;
 J = linRegCost([ones(m, 1) X], y, theta, options);
 
 fprintf(['Cost at theta = [1 ; 1]: %f '...

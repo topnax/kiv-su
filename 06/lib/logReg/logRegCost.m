@@ -1,4 +1,4 @@
-function [J, grad] = logRegCost(X, y, theta)
+function [J, grad] = logRegCost(X, y, theta, options)
 %TODO
 %COSTFUNCTION Compute cost and gradient for logistic regression
 %   J = logRegCost(theta, X, y) computes the cost of using theta as the
@@ -26,10 +26,16 @@ m = size(X, 1);
 % hypothesis
 
 h = sigmoid(X * theta);
-J = - (1 / m) * sum(y .* log(h) + (1 - y) .* log(1 - h));
+% J = - (1 / m) * sum(y .* log(h) + (1 - y) .* log(1 - h));
+lambda = options.lambda;
+
+J = (-1 / m) * sum(y .* log(h) + (1 - y) .* log(1 - h)) + lambda/(2 * m) * sum(theta(2:size(theta)).^2);
+
+% do not regularize the first theta parameter
+grad(1) = (1 / m) * sum((h - y) .* X(:, 1));
 
 for i = 1 : size(grad)
-    grad(i) = (1 / m) * sum((h - y)' * X(:, i));
+    grad(i) = (1 / m) * sum((h - y) .* X(:, i)) + lambda / m * theta(i);
 end
 
 
