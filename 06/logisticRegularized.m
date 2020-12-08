@@ -74,7 +74,11 @@ pause;
 % Initialize fitting parameters
 initial_theta = zeros(size(X, 2), 1);
 
-options.lambda = 0;
+% when using a tiny lambda, e.g. 0.001, the classifier has a very high training accuracy, but overfits the data, that might decrease the classifier's accuracy when used on real data
+
+% when using a large lambda, e.g. 100, the classifier does not fit the training data very well and shows a significant bias. 
+
+options.lambda = 1;
 options.alpha = 20;
 options.iters = 10000;
 
@@ -82,12 +86,12 @@ options.iters = 10000;
 optOptions = optimset('GradObj', 'on', 'MaxIter', 400);
 
 % Optimize
-[theta, J, exit_flag] = ...
-	gradientDescent(@(t)(logRegCost(X, y, t, options)), initial_theta, options);
+%[theta, J, exit_flag] = ...
+%	gradientDescent(@(t)(logRegCost(X, y, t, options)), initial_theta, options);
 
 % use for better optimization	
-%[theta, J, exit_flag] = ...
-%	fminunc(@(t)(logRegCost(X, y, t, options)), initial_theta, optOptions);
+[theta, J, exit_flag] = ...
+	fminunc(@(t)(logRegCost(X, y, t, options)), initial_theta, optOptions);
 
 % Plot Boundary
 % Here is the grid range

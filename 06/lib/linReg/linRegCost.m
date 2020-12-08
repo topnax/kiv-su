@@ -1,20 +1,27 @@
 % J is the value of cost function
 % grad is gradient of the cost function  with respect to parameters theta
 % TODO
-function [J, grad] = linRegCost(X, y, theta, lambda)
+function [J, grad] = linRegCost(X, y, theta, options)
 
 % Initialize some useful values
 m = length(y); % number of training examples
 J = 0;
-prediction = linRegPredict(X, theta);
+h = linRegPredict(X, theta);
 
-% excluded the first theta value
-theta1 = [0 ; theta(2:end, :)];
+lambda = options.lambda;
 
 
-J = (1 / (2 * m)) * (prediction - y)' * (prediction - y)  + (lambda.lambda * (theta1' * theta1));
-grad = (1 / ( m)) * X' * (X * theta - y) + (lambda.lambda * theta1);
+% regularize theta by removing first value
+theta_reg = [0;theta(2:end, :);];
+J = (1/(2*m))*sum((h-y).^2)+(lambda/(2*m))*theta_reg'*theta_reg;
 
+grad = (1/m)*(X'*(h-y)+lambda*theta_reg);
+
+
+
+% =========================================================================
+
+grad = grad(:);
 % =========================================================================
 
 end
