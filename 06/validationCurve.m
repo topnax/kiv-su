@@ -30,8 +30,8 @@ options.alpha = 0.2;
 for i = 1:length(lambda_vec),
     lambda = lambda_vec(i);
     options.lambda = lambda;
-lambda
     theta = trainFunc(X, y, options);
+    options.lambda = 0;
     error_train(i) = linRegCost(X, y, theta, options);
     error_val(i) = linRegCost(Xval, yval, theta, options);
 end;
