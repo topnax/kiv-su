@@ -103,6 +103,7 @@ lambda = 0;
                   [ones(size(Xval, 1), 1) Xval], yval, ...
                   lambda, @trainLinearReg);
 
+% we can see that when using less than 6 training examples the model is not trained well and the error increases as the number of training examples decreases
 plot(1:m, error_train, 1:m, error_val);
 title('Learning curve for linear regression')
 legend('Train', 'Cross Validation')
@@ -113,6 +114,8 @@ axis([0 13 0 150])
     learningCurve([ones(m, 1) X], y, ...
                   [ones(size(Xval, 1), 1) Xval], yval, ...
                   lambda, @normalEqn);
+
+% same applies for LR by normal equations;
 figure;
 plot(1:m, error_train, 1:m, error_val);
 title('Learning curve for linear regression by normal equations')
@@ -171,6 +174,8 @@ options.alpha = 0.2;
 [theta] = trainLinearReg(X_poly, y, options);
 
 % Plot training data and fit
+
+% polynomial (we previously plotted linear) regression
 figure(1);
 plot(X, y, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
 plotFit(min(X), max(X), mu, sigma, theta, p, 'b');
@@ -183,6 +188,8 @@ figure;
     learningCurve(X_poly, y, X_poly_val, yval, lambda, @trainLinearReg);
 plot(1:m, error_train, 1:m, error_val);
 
+% from my observations changing lambda did not change this graph in a significant way
+% i tried values 0, 10, 20, 100.
 title(sprintf('Polynomial Regression Learning Curve (lambda = %f)', options.lambda));
 xlabel('Number of training examples')
 ylabel('Error')
@@ -194,6 +201,9 @@ figure;
     learningCurve(X_poly, y, X_poly_val, yval, lambda, @normalEqn);
 plot(1:m, error_train, 1:m, error_val);
 
+% from my observations changing lambda did not change this graph in a significant way
+% i tried values 0, 10, 20, 100
+% As the number of training examples increase we can see a trend - the error is increases. The model seems to become more and more overtrained.
 title(sprintf('Polynomial Regression Learning Curve NE (lambda = %f)', options.lambda));
 xlabel('Number of training examples')
 ylabel('Error')
@@ -218,6 +228,7 @@ pause;
 [lambda_vec, error_train, error_val] = ...
     validationCurve(X_poly, y, X_poly_val, yval, @trainLinearReg);
 
+% we can see that with the regularization parameter equal to zero the error is enormous and even a with small value set to this parameter the model is trained much better.
 close all;
 plot(lambda_vec, error_train, lambda_vec, error_val);
 legend('Train', 'Cross Validation');
@@ -227,6 +238,7 @@ title('Validation curve for gradient descent');
 
 figure;
 
+% same applies to NE
 [lambda_vec, error_train, error_val] = ...
     validationCurve(X_poly, y, X_poly_val, yval, @normalEqn);
 plot(lambda_vec, error_train, lambda_vec, error_val);
@@ -244,12 +256,14 @@ end
 fprintf('Program paused. Press enter to continue.\n');
 pause;
 
-options.lambda = 3;
+options.lambda = 4;
 options.alpha = 0.2;
 theta = trainLinearReg(X_poly, y, options);
 error = (X_poly_test*theta) - ytest;
 error_test = (1 / (2*size(Xtest,1))) * (transpose(error) * error)
 % Plot training data and fit
+
+% by looking at the following graphs we can observe that changing the regularization parameter the trained model changes in a noticeable way
 figure;
 plot(X, y, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
 plotFit(min(X), max(X), mu, sigma, theta, p, 'r');
