@@ -28,17 +28,19 @@ options.alpha = 0.2;
 %               lambda = lambda_vec(i)
 
 for i = 1:length(lambda_vec),
-  X_train = X(1:i, :);
-  y_train = y(1:i);
-options.lambda = lambda_vec(i);
-  theta = trainLinearReg(X_train, y_train, options);
+    X_train = X(1:i, :);
+    y_train = y(1:i);
+
+    % load the lambda from the preset lambda_vec
+    options.lambda = lambda_vec(i);
+
+    % train the model
+    theta = trainLinearReg(X_train, y_train, options);
     options.lambda = 0;
-  error_train(i)  = linRegCost(X_train, y_train, theta, options);  
-  error_val(i)    = linRegCost(Xval, yval, theta, options);
+
+    error_train(i) = linRegCost(X_train, y_train, theta, options);  
+    error_val(i) = linRegCost(Xval, yval, theta, options);
 end;
-
-
-
 
 % =========================================================================
 

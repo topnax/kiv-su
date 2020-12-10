@@ -31,10 +31,11 @@ lambda = options.lambda;
 
 J = (-1 / m) * sum(y .* log(h) + (1 - y) .* log(1 - h)) + lambda/(2 * m) * sum(theta(2:size(theta)).^2);
 
-% do not regularize the first theta parameter
+% make sure not to regularize the first theta parameter
 grad(1) = (1 / m) * sum((h - y) .* X(:, 1));
 
 for i = 2 : size(grad)
+    % regularize other theta parameters
     grad(i) = (1 / m) * sum((h - y) .* X(:, i)) + lambda / m * theta(i);
 end
 

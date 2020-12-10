@@ -32,32 +32,23 @@ options.alpha = 0.001;
 %               error_val(i) should give you the errors
 %               obtained after training on i examples.
 %
-% for all cases
 
 for i = 1:m
-	% for each training step, the training set must contains 1 to m 
-	Xtrain = X(1:i,:);
-	ytrain = y(1:i);
+    % each iteration select from 1 to i that goes up to m    
+	X_train = X(1:i, :);
+	y_train = y(1:i);
 	
 	% calc the theta
-    Xtrain
-    lambda	
-	theta = trainFunc(Xtrain, ytrain, options);	
+	theta = trainFunc(X_train, y_train, options);	
 
-	%Compute train/cross validation errors using training examples
-	[Jtrain,grad_train]=linRegCost(Xtrain,ytrain,theta,options); 
-	[Jval,grad_val]=linRegCost(Xval,yval,theta,options);
+	% compute train and cross validation errors 
+	[J_train, _] = linRegCost(X_train, y_train, theta, options); 
+	[J_val, _]= linRegCost(Xval, yval, theta,options);
 
     %storing the result 
-    error_train(i) = Jtrain;  
-    error_val(i) = Jval;
+    error_train(i) = J_train;  
+    error_val(i) = J_val;
 end
-
-
-
-
-
-% -------------------------------------------------------------
 
 % =========================================================================
 
