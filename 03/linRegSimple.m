@@ -35,6 +35,10 @@ hold on; % keep previous plot visible
 plot(X(:,2), X*theta, '-')
 hold off % don't overlay any more plots on this figure
 
+test_data = [1, 3.5];
+theta
+test_data
+
 % Predict values for population sizes of 35,000 and 70,000
 predict1 = [1, 3.5] *theta;
 fprintf('For population = 35,000, we predict a profit of %f\n',...
