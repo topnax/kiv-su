@@ -30,4 +30,7 @@
 ## Znalost
 - je procedurální
     - lze ji "vykonat"
+
+## Hypotéza
+- správný formální popis problému, dostatečně obecný, aby mohl být aplikován na neznámá data a poskytoval uspokojivé výsledky 
     
