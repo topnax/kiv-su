@@ -19,7 +19,7 @@
     
 
 ### Problémy a omezení (Rosenbrockova funkce)
-- není-li funkce derivovatelná, jsou gradientní metody obecně špatně podmíněné (lze řešit např. vyhlezením cenové funkce pomocí aproximace splinem, apo. nebo aplikací nějaké negradientní metody)
+- není-li funkce derivovatelná, jsou gradientní metody obecně špatně podmíněné (lze řešit např. vyhlazením cenové funkce pomocí aproximace splinem nebo aplikací nějaké negradientní metody)
 ### Rosenbrockova funkce
 - funkce, na které se velmi špatně aplikuje gradientní sestup
 - takové fce, kdy mínus gradient nevede optimálně k minimu
@@ -31,8 +31,17 @@
 
 ## Škálování příznaků
 - pokud mají jednotlivé příznaky různé rozsahy, tak parabolický kýbl může být zploštělý, a tak gradientní sestup trvá velmi dlouho (patologický tvar funkce)
-- je třeba zajisti, aby měly jednotlivé složk vstupního vektoru (příznakového) zhruba stejný rozsah hodnot
+- je třeba zajistit, aby měly jednotlivé složky vstupního vektoru (příznakového) zhruba stejný rozsah hodnot
+
+![](res/feature-scaling.png)
+
+![](res/feature-scaling-2.png)
+
+![](res/feature-scaling-3.png)
 
 
 ## Míra učení
-
+- označuje se řeckým písmenem `alpha`
+- označuje rychlost učení, jak velký krok během jedné iterace učení učiníme
+- volba příliš vysokého `alpha` může vést k "přestřelení" a eventuálnímu vyskočení z parabolického kýble
+- volba příliš nízkého `alpha` vede k pomalé konvergenci k výsledku
