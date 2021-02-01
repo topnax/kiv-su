@@ -68,7 +68,7 @@
 
 ### Abstrakce
 - konceptuální proces, při nemž jsou obecná pravidla a koncepty vyvozovány z použití a klasifikace konkrétních příkladů
-- `Franta má 3.7 promile alkoholu v krvi (obstrakce =>) (<= konkretizace) Franta je opilý`
+- `Franta má 3.7 promile alkoholu v krvi (abstrakce =>) (<= konkretizace) Franta je opilý`
 - technické řešení abstrakce je vypouštění informace
 
 ### Konkretizace
@@ -103,6 +103,14 @@
 - použitelné v ML
 
 ## Úloha strojového učení (její podmínky a cíle)
+- musí být zadána úloha
+    - množina příkladů (trénovací množina, též *korpus*)
+    - popis/projekce příkladů
+    - klasifikace příkladů (v případě učení s učitelem)
+- **hledá se**
+    - správný formální popis problému (**hypotéza**), dostatečně obecný, aby mohl být aplikován na neznámá data, a poskytoval uspokojivé výsledky
+    - parametry hypotézy
+
 
 ## Učení s učitelem a bez učitele
 - s učitelem, bez učitele, zpětnovazební, jiné
@@ -117,5 +125,18 @@
     - zledá se `(n-1)D` (hyper-plocha), která odděluje data v `nD` prostoru
 
 ## Regrese a klasifikace (aplikace)
+- **regrese**
+    - odhadujeme cenu bytu podle podlahové plochy
+- **klasifikace**
+    - tribodiagnostika - je třeba vyměnit součástku? - **s učitelem**
+    - kolik velikostí triček vyrábět? - **bez učitele**
+
 
 ## Primitivní lineární klasifikátor
+- omezení lineární regrese na rozsah `<0; 1>`
+    - není jednoznačné
+    - nelze algoritmem LR určit/natrénovat
+    - je velmi citlivé na extrémní marginální hodnoty v trénovací množině
+
+
+
