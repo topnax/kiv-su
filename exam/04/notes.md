@@ -14,6 +14,7 @@
 ## Algoritmy učení
 
 ## Gradientní sestup
+- normovaná střední kvadratická odchylka počtem bodů
 - je dána cenová funkce `J(theta_0, ..., theta_n)`
     - chceme najít hodnoty `theta_i`, pro které **nabývá minima**
 - postup:
